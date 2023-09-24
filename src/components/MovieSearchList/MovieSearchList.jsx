@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useSearchParams } from 'react-router-dom';
 
 export const MoviesSearchList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const nameMovie = searchParams.get('query') ?? '';
 
   const [movies, setMovies] = useState([]);
