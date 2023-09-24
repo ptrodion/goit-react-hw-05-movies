@@ -6,7 +6,7 @@ import {
   MovDetWrapper,
   MovDetDescription,
   MovDetItem,
-} from 'pages/Movies/MovieStyled';
+} from 'pages/Movie/MovieStyled';
 
 export const MoviesDetails = ({
   dates: { original_title: title, vote_average, overview: description, genres },

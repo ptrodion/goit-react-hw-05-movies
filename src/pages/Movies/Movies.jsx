@@ -1,29 +1,19 @@
-import { useLocation, useParams } from 'react-router-dom';
-import { useRef, useState } from 'react';
-
-import { BackToLink } from 'components/BackLink/BackLink';
-import { MoviesGeneral } from 'components/MoviesTrending/MoviesTrending';
-import MoviesSearch from 'components/MoviesSearch/MoviesSearch';
+import { MoviesSearchList } from 'components/MovieSearchList/MovieSearchList';
+import { SearchBar } from 'components/SearchBar/SearchBar';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
-  const location = useLocation();
-  const backLinkHref = useRef(location.state?.from ?? '/');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const { id } = useParams();
-  const [url] = useState(
-    `https://api.themoviedb.org/3/movie/${id}?language=en-US`
-  );
+  const onSubmit = query => {
+    searchParams.set('query', query);
+    setSearchParams(searchParams);
+  };
 
   return (
     <>
-      {id ? (
-        <>
-          <BackToLink backLinkHref={backLinkHref.current} />
-          <MoviesGeneral url={url} />
-        </>
-      ) : (
-        <MoviesSearch />
-      )}
+      <SearchBar onSubmit={onSubmit} />
+      <MoviesSearchList />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { TrendingItem } from 'components/MoviesTrending/TrendingItem/TrendingItem';
+import { TrendingItem } from 'components/TrendingItem/TrendingItem';
 import { TrendingListSt } from './TrendingListStyled';
 
 export const TrendingList = ({ movies }) => {

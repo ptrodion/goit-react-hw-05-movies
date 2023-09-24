@@ -28,9 +28,7 @@ export const AdditionalInfo = () => {
       <AddInfoList type="button" onClick={handleReviewsClick}>
         <AddInfoListSpan>Reviews</AddInfoListSpan>
       </AddInfoList>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <Outlet />
     </AddInfoWrapper>
   );
 };

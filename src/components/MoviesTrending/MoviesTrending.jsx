@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { AdditionalInfo } from 'components/MoviesTrending/AdditionalInfo/AdditionalInfo';
+import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
 import { Loader } from 'components/Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 import { getDates } from 'components/Api/api';
 import { Error } from 'components/Error/Error';
-import { MoviesDetails } from './MoviesDetails/MoviesDetails';
+import { MoviesDetails } from '../MoviesDetails/MoviesDetails';
 
-export const MoviesGeneral = ({ url }) => {
+export const MoviesTrending = ({ url }) => {
   const [dates, setDates] = useState(null);
   const [img, setImg] = useState(' ');
   const [error, setError] = useState(false);
