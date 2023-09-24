@@ -1,5 +1,3 @@
-import { Loader } from 'components/Loader/Loader';
-import { Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
   AddInfoList,
