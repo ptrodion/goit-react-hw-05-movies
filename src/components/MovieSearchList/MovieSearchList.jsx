@@ -1,4 +1,4 @@
-import { getDates } from 'components/Api/api';
+import { getDates } from 'helpers/Api/api';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { TrendingList } from 'components/TrendingList/TrendingList';
@@ -11,7 +11,6 @@ export const MoviesSearchList = () => {
   const nameMovie = searchParams.get('query') ?? '';
 
   const [movies, setMovies] = useState([]);
-  const url = `https://api.themoviedb.org/3/search/movie?query=${nameMovie}`;
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +25,10 @@ export const MoviesSearchList = () => {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await getDates(url, controller);
+        const { results } = await getDates(
+          `3/search/movie?query=${nameMovie}`,
+          controller
+        );
 
         if (results.length !== 0) {
           setMovies([...results]);
@@ -47,7 +49,7 @@ export const MoviesSearchList = () => {
     return () => {
       controller.abort();
     };
-  }, [nameMovie, url]);
+  }, [nameMovie]);
 
   return (
     <>

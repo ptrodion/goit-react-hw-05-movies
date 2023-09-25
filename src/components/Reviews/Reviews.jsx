@@ -1,4 +1,4 @@
-import { getDates } from 'components/Api/api';
+import { getDates } from 'helpers/Api/api';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
@@ -8,9 +8,6 @@ import { ReviewsInformation } from './ReviewsStyled';
 
 export default function Reviews() {
   const { id } = useParams();
-  const [url] = useState(
-    `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`
-  );
 
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(false);
@@ -24,7 +21,10 @@ export default function Reviews() {
         setLoading(true);
         setError(false);
 
-        const resp = await getDates(url, controller);
+        const resp = await getDates(
+          `3/movie/${id}/reviews?language=en-US`,
+          controller
+        );
         if (resp.results.length !== 0) {
           setReviews(resp.results);
         }
@@ -42,7 +42,7 @@ export default function Reviews() {
     return () => {
       controller.abort();
     };
-  }, [url]);
+  }, [id]);
 
   return (
     <>

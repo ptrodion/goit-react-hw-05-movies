@@ -4,7 +4,7 @@ import {
   AddInfoListSpan,
   AddInfoTitle,
   AddInfoWrapper,
-} from './AdditionalInfoStyled';
+} from './AddInfoStyled';
 
 export const AdditionalInfo = () => {
   const navigate = useNavigate();

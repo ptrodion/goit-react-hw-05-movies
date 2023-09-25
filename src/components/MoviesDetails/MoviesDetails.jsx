@@ -7,10 +7,11 @@ import {
   MovDetDescription,
   MovDetItem,
 } from 'pages/Movie/MovieStyled';
+import defaultImage from './defaultMovie.jpg';
 
 export const MoviesDetails = ({
   dates: { original_title: title, vote_average, overview: description, genres },
-  srs,
+  image,
 }) => {
   const resultString = genres.reduce((accumulator, currentGenre) => {
     return accumulator === ''
@@ -23,7 +24,13 @@ export const MoviesDetails = ({
   return (
     <MovDetWrapper>
       <MovDetTitleWrapper>
-        <img src={srs} alt={title} width={150} />
+        <img
+          src={
+            image ? `https://image.tmdb.org/t/p/original${image}` : defaultImage
+          }
+          alt={title}
+          width={150}
+        />
       </MovDetTitleWrapper>
       <MovDetList>
         <MovDetItem>

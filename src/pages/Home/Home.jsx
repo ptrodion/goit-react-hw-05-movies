@@ -1,14 +1,13 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 
-import { getDates } from 'components/Api/api';
+import { getDates } from 'helpers/Api/api';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { TrendingList } from 'components/TrendingList/TrendingList';
 import { Tittle } from 'components/TrendingList/TrendingListStyled';
 
 export default function Home() {
-  const url = 'https://api.themoviedb.org/3/trending/all/day';
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,7 @@ export default function Home() {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await getDates(url, controller);
+        const { results } = await getDates('3/trending/all/day', controller);
 
         if (results.length !== 0) {
           setMovies([...results]);

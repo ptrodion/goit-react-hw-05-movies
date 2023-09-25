@@ -5,16 +5,14 @@ export const CastsList = ({ actors }) => {
   return (
     <>
       <CastsListSt>
-        {actors.map(({ id, profile_path, original_name, character }) =>
-          profile_path !== null ? (
-            <CastsItem
-              key={id}
-              image={profile_path}
-              alt={original_name}
-              character={character}
-            ></CastsItem>
-          ) : null
-        )}
+        {actors.map(({ id, profile_path, original_name, character }) => (
+          <CastsItem
+            key={id}
+            image={profile_path}
+            alt={original_name}
+            character={character}
+          ></CastsItem>
+        ))}
       </CastsListSt>
     </>
   );

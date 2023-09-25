@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import defaultImage from './default_profile.jpg';
 import {
   CastsItemSt,
   CastsItemImg,
@@ -7,18 +7,14 @@ import {
 } from './CastItemStyled';
 
 export const CastsItem = ({ image, alt, character }) => {
-  const [img, setImg] = useState(' ');
-  useEffect(() => {
-    setImg(`https://image.tmdb.org/t/p/original${image}`);
-  }, [image]);
-
   return (
     <CastsItemSt>
       <CastsTitleNameSt>{alt}</CastsTitleNameSt>
       <CastsItemImg
-        src={img}
-        alt={`
-Шn this photo: ${alt}`}
+        src={
+          image ? `https://image.tmdb.org/t/p/original${image}` : defaultImage
+        }
+        alt={'photo not found'}
         width="350"
       />
       <CastsTitleCharacterSt>{`Character: ${character}`}</CastsTitleCharacterSt>

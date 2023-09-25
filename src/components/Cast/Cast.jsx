@@ -1,4 +1,4 @@
-import { getDates } from 'components/Api/api';
+import { getDates } from 'helpers/Api/api';
 import { CastsList } from 'components/CastsList/CastsList';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
@@ -8,9 +8,6 @@ import { useParams } from 'react-router-dom';
 
 export default function Cast() {
   const { id } = useParams();
-  const [url] = useState(
-    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`
-  );
 
   const [actors, setActors] = useState([]);
   const [error, setError] = useState(false);
@@ -24,7 +21,10 @@ export default function Cast() {
         setLoading(true);
         setError(false);
 
-        const resp = await getDates(url, controller);
+        const resp = await getDates(
+          `3/movie/${id}/credits?language=en-US`,
+          controller
+        );
 
         if (resp.cast.length !== 0) {
           setActors(resp.cast);
@@ -47,7 +47,7 @@ export default function Cast() {
     return () => {
       controller.abort();
     };
-  }, [url]);
+  }, [id]);
 
   return (
     <>
