@@ -10,6 +10,8 @@ export const getDates = async (url, controller) => {
     language: 'en-US',
     signal: controller.signal,
   };
-  const response = await axios.get(url, config);
-  return response.data;
+  return await axios.get(url, config);
+  // const response = await axios.get(url, config);
+
+  // return response.data;
 };

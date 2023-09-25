@@ -26,13 +26,12 @@ export default function Cast() {
           controller
         );
 
-        if (resp.cast.length !== 0) {
-          setActors(resp.cast);
+        const { cast } = resp.data;
+        if (cast !== 0) {
+          setActors(cast);
         } else {
           toast.error('Nothing found for this query.');
         }
-
-        setActors(resp.cast);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError(true);

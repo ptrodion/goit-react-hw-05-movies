@@ -21,12 +21,11 @@ export default function Reviews() {
         setLoading(true);
         setError(false);
 
-        const resp = await getDates(
-          `3/movie/${id}/reviews?language=en-US`,
-          controller
-        );
-        if (resp.results.length !== 0) {
-          setReviews(resp.results);
+        const {
+          data: { results },
+        } = await getDates(`3/movie/${id}/reviews?language=en-US`, controller);
+        if (results.length !== 0) {
+          setReviews(results);
         }
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {

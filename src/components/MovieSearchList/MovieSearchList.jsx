@@ -25,10 +25,9 @@ export const MoviesSearchList = () => {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await getDates(
-          `3/search/movie?query=${nameMovie}`,
-          controller
-        );
+        const {
+          data: { results },
+        } = await getDates(`3/search/movie?query=${nameMovie}`, controller);
 
         if (results.length !== 0) {
           setMovies([...results]);

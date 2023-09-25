@@ -19,7 +19,9 @@ export default function Home() {
       try {
         setLoading(true);
         setError(false);
-        const { results } = await getDates('3/trending/all/day', controller);
+        const {
+          data: { results },
+        } = await getDates('3/trending/all/day', controller);
 
         if (results.length !== 0) {
           setMovies([...results]);

@@ -15,7 +15,6 @@ export default function Movie() {
   const { id } = useParams();
 
   const [dates, setDates] = useState(null);
-  // const [img, setImg] = useState(' ');
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -26,11 +25,13 @@ export default function Movie() {
       try {
         setLoading(true);
         setError(false);
-
-        const resp = await getDates(`3/movie/${id}?language=en-US`, controller);
-        // setImg();
-        setDates(resp);
+        const { data } = await getDates(
+          `3/movie/${id}?language=en-US`,
+          controller
+        );
+        setDates(data);
       } catch (error) {
+        console.log(error);
         if (error.code !== 'ERR_CANCELED') {
           setError(true);
         }
