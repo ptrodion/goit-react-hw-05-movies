@@ -53,7 +53,7 @@ export default function Movie() {
           <BackToLink backLinkHref={backLinkHref.current} />
           <MoviesDetails
             dates={dates}
-            image={`https:/image.tmdb.org/t/p/original${dates.poster_path}`}
+            image={`https://image.tmdb.org/t/p/w500${dates.poster_path}`}
           />
           <AdditionalInfo />
           {loading && <Loader />}
