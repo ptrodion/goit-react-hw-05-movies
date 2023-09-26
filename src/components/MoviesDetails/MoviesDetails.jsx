@@ -21,16 +21,11 @@ export const MoviesDetails = ({
   }, '');
 
   const rating = vote_average.toString().slice(0, -2);
+  const img = `https:/image.tmdb.org/t/p/original${image}`;
   return (
     <MovDetWrapper>
       <MovDetTitleWrapper>
-        <img
-          src={
-            image ? `https:/image.tmdb.org/t/p/original${image}` : defaultImg
-          }
-          alt={title}
-          width={150}
-        />
+        <img src={image ? img : defaultImg} alt={title} width={150} />
       </MovDetTitleWrapper>
       <MovDetList>
         <MovDetItem>
