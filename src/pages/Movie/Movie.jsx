@@ -1,6 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-
 import { BackToLink } from 'components/BackLink/BackLink';
 import { getDates } from 'helpers/Api/api';
 import { MoviesDetails } from 'components/MoviesDetails/MoviesDetails';

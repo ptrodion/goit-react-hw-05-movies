@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-
 import { LuSearch } from 'react-icons/lu';
 import {
   FormWrapper,

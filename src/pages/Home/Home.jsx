@@ -1,7 +1,6 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
-
-import { GetPopularFilm, getDates } from 'helpers/Api/api';
+import { getDates } from 'helpers/Api/api';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { TrendingList } from 'components/TrendingList/TrendingList';
