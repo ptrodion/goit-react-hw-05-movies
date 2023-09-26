@@ -26,7 +26,9 @@ export const MoviesDetails = ({
       <MovDetTitleWrapper>
         <img
           src={
-            image ? `https:/image/tmd/b/org/t/p/original${image}` : defaultImg
+            image
+              ? `// https://image.tmdb.org/t/p/original${image}`
+              : defaultImg
           }
           alt={title}
           width={150}
