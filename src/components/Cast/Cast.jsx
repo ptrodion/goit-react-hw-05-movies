@@ -14,6 +14,9 @@ export default function Cast() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     const controller = new AbortController();
 
     const fetchData = async () => {
@@ -21,12 +24,11 @@ export default function Cast() {
         setLoading(true);
         setError(false);
 
-        const resp = await getDates(
-          `3/movie/${id}/credits?language=en-US`,
+        const { cast } = await getDates(
+          `movie/${id}/credits?language=en-US`,
           controller
         );
 
-        const { cast } = resp.data;
         if (cast !== 0) {
           setActors(cast);
         } else {

@@ -7,7 +7,8 @@ import {
   MovDetDescription,
   MovDetItem,
 } from 'pages/Movie/MovieStyled';
-import defaultImage from './defaultMovie.jpg';
+const defaultImg =
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
 export const MoviesDetails = ({
   dates: { original_title: title, vote_average, overview: description, genres },
@@ -20,13 +21,12 @@ export const MoviesDetails = ({
   }, '');
 
   const rating = vote_average.toString().slice(0, -2);
-
   return (
     <MovDetWrapper>
       <MovDetTitleWrapper>
         <img
           src={
-            image ? `https://image.tmdb.org/t/p/original${image}` : defaultImage
+            image ? `https:/image.tmdb.org/t/p/original${image}` : defaultImg
           }
           alt={title}
           width={150}

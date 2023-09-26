@@ -14,6 +14,9 @@ export default function Reviews() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     const controller = new AbortController();
 
     const fetchData = async () => {
@@ -21,9 +24,10 @@ export default function Reviews() {
         setLoading(true);
         setError(false);
 
-        const {
-          data: { results },
-        } = await getDates(`3/movie/${id}/reviews?language=en-US`, controller);
+        const { results } = await getDates(
+          `movie/${id}/reviews?language=en-US`,
+          controller
+        );
         if (results.length !== 0) {
           setReviews(results);
         }

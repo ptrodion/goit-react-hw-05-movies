@@ -19,19 +19,19 @@ export default function Movie() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
     const controller = new AbortController();
 
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(false);
-        const { data } = await getDates(
-          `3/movie/${id}?language=en-US`,
-          controller
-        );
+        const data = await getDates(`movie/${id}?language=en-US`, controller);
+
         setDates(data);
       } catch (error) {
-        console.log(error);
         if (error.code !== 'ERR_CANCELED') {
           setError(true);
         }
@@ -52,12 +52,12 @@ export default function Movie() {
       {dates && (
         <>
           <BackToLink backLinkHref={backLinkHref.current} />
-          <MoviesDetails dates={dates} image={dates?.poster_path} />
+          <MoviesDetails dates={dates} image={dates.poster_path} />
           <AdditionalInfo />
           {loading && <Loader />}
-          {error && <Error message={'What went wrong, try again.'} />}
         </>
       )}
+      {error && <Error message={'What went wrong, try again.'} />}
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );

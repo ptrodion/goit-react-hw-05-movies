@@ -25,9 +25,10 @@ export const MoviesSearchList = () => {
       try {
         setLoading(true);
         setError(false);
-        const {
-          data: { results },
-        } = await getDates(`3/search/movie?query=${nameMovie}`, controller);
+        const { results } = await getDates(
+          `search/movie?query=${nameMovie}`,
+          controller
+        );
 
         if (results.length !== 0) {
           setMovies([...results]);
@@ -55,10 +56,11 @@ export const MoviesSearchList = () => {
       {movies.length > 0 && (
         <>
           {loading && <Loader />}
-          {error && <Error message={'What went wrong, try again.'} />}
+
           <TrendingList movies={movies} />
         </>
       )}
+      {error && <Error message={'What went wrong, try again.'} />}
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );

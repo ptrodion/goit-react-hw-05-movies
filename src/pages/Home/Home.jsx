@@ -1,7 +1,7 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 
-import { getDates } from 'helpers/Api/api';
+import { GetPopularFilm, getDates } from 'helpers/Api/api';
 import { Error } from 'components/Error/Error';
 import { Loader } from 'components/Loader/Loader';
 import { TrendingList } from 'components/TrendingList/TrendingList';
@@ -19,9 +19,7 @@ export default function Home() {
       try {
         setLoading(true);
         setError(false);
-        const {
-          data: { results },
-        } = await getDates('3/trending/all/day', controller);
+        const { results } = await getDates('trending/all/day', controller);
 
         if (results.length !== 0) {
           setMovies([...results]);
@@ -49,11 +47,11 @@ export default function Home() {
       {movies.length > 0 && (
         <>
           {loading && <Loader />}
-          {error && <Error message={'What went wrong, try again.'} />}
           <Tittle>Trending Today:</Tittle>
           <TrendingList movies={movies} />
         </>
       )}
+      {error && <Error message={'What went wrong, try again.'} />}
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );
