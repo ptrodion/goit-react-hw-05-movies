@@ -8,4 +8,8 @@ export const TrendingLink = styled(NavLink)`
     color: #ff6600;
     font-size: 14px;
   }
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;

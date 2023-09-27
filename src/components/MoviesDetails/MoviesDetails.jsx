@@ -24,7 +24,11 @@ export const MoviesDetails = ({
   return (
     <MovDetWrapper>
       <MovDetTitleWrapper>
-        <img src={image ? image : defaultImg} alt={title} width={150} />
+        <img
+          src={image ? `https://image.tmdb.org/t/p/w500${image}` : defaultImg}
+          alt={title}
+          width={150}
+        />
       </MovDetTitleWrapper>
       <MovDetList>
         <MovDetItem>
